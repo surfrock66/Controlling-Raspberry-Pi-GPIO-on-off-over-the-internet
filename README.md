@@ -19,6 +19,7 @@ Install Instructions:
     sudo make install
     
 To run pigpiod at startup, add the following to the root crontab with "sudo crontab -e":
+
     @reboot              /usr/local/bin/pigpiod
 
 You need a LAMP stack/web server on the pi:
