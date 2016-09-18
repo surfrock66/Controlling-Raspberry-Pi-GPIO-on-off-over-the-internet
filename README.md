@@ -71,7 +71,9 @@ http://popoklopsi.github.io/RaspberryPi-LedStrip/img/rgb/small/pi_4.png
 7. Set the RGB.sh script to run at boot by running the following code:
 
     sudo cp ~/RGB.sh /etc/init.d/RGB
+
     sudo chmod 755 /etc/init.d/RGB
+
     sudo update-rc.d RGB defaults
     
 8. To change the on off status go to http://raspberry-pi-ip/RGB.php
