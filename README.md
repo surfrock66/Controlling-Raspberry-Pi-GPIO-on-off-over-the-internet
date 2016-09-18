@@ -1,4 +1,4 @@
-Controlling-Raspberry-Pi-GPIO-on-off-over-the-internet
+RPi-RGB-Web
 ======================================
 ###Licensed under the MIT license.
 
@@ -27,6 +27,24 @@ You need a LAMP stack/web server on the pi:
     sudo apt-get install apache2 php5 mysql-client mysql-server vsftpd
 
 LAMP how to: https://www.digitalocean.com/community/tutorials/how-to-install-linux-apache-mysql-php-lamp-stack-on-debian
+
+##Hardware Required
+
+I've used the hardware outlined in this guide, and I'll summarize it here: http://popoklopsi.github.io/RaspberryPi-LedStrip/#!/
+
+Parts needed:
+
+    https://www.amazon.com/MAJOR-BRANDS-MOSFET-IRLZ34N-TO-220ABN-CHANNEL/dp/B00CHTJOSG
+
+Parts that are helpful:
+
+    https://www.amazon.com/Elegoo-120pcs-Multicolored-Breadboard-arduino/dp/B01EV70C78/ref=sr_1_2?ie=UTF8&qid=1474174642&sr=8-2
+    https://www.amazon.com/ZITRADES-Light-Strips-Female-Connector/dp/B00D0Y8SG6/ref=sr_1_7?ie=UTF8&qid=1474175095&sr=8-7
+    https://www.amazon.com/gp/product/B01G6EAZOO/ref=oh_aui_detailpage_o03_s00?ie=UTF8&psc=1
+    
+How to assemble the support circuit (you can use whatever GPIO pins you want
+
+http://popoklopsi.github.io/RaspberryPi-LedStrip/img/rgb/small/pi_4.png
 
 ##Setup And Install
 
