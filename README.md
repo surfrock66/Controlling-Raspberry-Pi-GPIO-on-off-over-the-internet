@@ -6,8 +6,12 @@ This code allows you to control Raspberry Pi's GPIO Via the internet, specifical
 
 I have provided a bunch of sample RGB images, however any image you desire can be used.  Resizing images in html breaks the canvas, so make sure your source image is the correct size for your needs.  Additionally, avoid compressed images because the RGB information will be inconsistent.
 
+Demonstration: https://www.youtube.com/watch?v=0ZzMoECYPew
+
 ##Packages Needed and Web Server
+
 You will need pigpiod, available here: http://abyz.co.uk/rpi/pigpio/index.html
+
 Install Instructions:
 
     rm pigpio.tar
@@ -42,14 +46,16 @@ Parts that are helpful:
     https://www.amazon.com/ZITRADES-Light-Strips-Female-Connector/dp/B00D0Y8SG6/ref=sr_1_7?ie=UTF8&qid=1474175095&sr=8-7
     https://www.amazon.com/gp/product/B01G6EAZOO/ref=oh_aui_detailpage_o03_s00?ie=UTF8&psc=1
     
-How to assemble the support circuit (you can use whatever GPIO pins you want
+How to assemble the support circuit (you can use whatever GPIO pins you want):
 
 http://popoklopsi.github.io/RaspberryPi-LedStrip/img/rgb/small/pi_4.png
 
 ##Setup And Install
 
 1. Place all the Files in the "For Web Server" folder in the Root of your web server. (Default is /var/www/html/)
+
 2. Select the desired PNG image you want to use in your interface, rename it to "RGB.png".  Remove other RGB-*.png files if desired.
+
 3. Ensure the web files are owned by the web user: 
 
     sudo chown www-data:www-data /var/www/html/RGB*
@@ -59,7 +65,9 @@ http://popoklopsi.github.io/RaspberryPi-LedStrip/img/rgb/small/pi_4.png
     sudo chmod 644 /var/www/html/RGB*
 
 5. Place RGB.sh in the "For Pi" somewhere on the Raspberry Pi. (For example, your home directory, ~/)
+
 6. Edit the RGB.sh file with the GPIO Pins you're using.  Modify the polling interval if needed.
+
 7. Set the RGB.sh script to run at boot by running the following code:
 
     sudo cp ~/RGB.sh /etc/init.d/RGB
@@ -71,7 +79,11 @@ http://popoklopsi.github.io/RaspberryPi-LedStrip/img/rgb/small/pi_4.png
 ##References
 
 http://abyz.co.uk/rpi/pigpio/index.html
+
 https://www.digitalocean.com/community/tutorials/how-to-install-linux-apache-mysql-php-lamp-stack-on-debian
+
 http://popoklopsi.github.io/RaspberryPi-LedStrip/#!/
+
 https://github.com/vlee489/Controlling-Raspberry-Pi-GPIO-on-off-over-the-internet
+
 http://ravingroo.com/decoded/download-html5-canvas-hex-rgb-color-picker.php
