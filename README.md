@@ -2,13 +2,25 @@ Controlling-Raspberry-Pi-GPIO-on-off-over-the-internet
 ======================================
 ###Licensed under the MIT license.
 
-This code allows you to control Raspberry Pi's GPIO
-Via the internet.
+This code allows you to control Raspberry Pi's GPIO Via the internet, specifically with the intention of controlling RGB LED Strips.  The idea is that an HTML5 Canvas of an image provides the RGB sample set, and based on a user's click, a color sample is detected, converted to RGB, and sent to the Pi's GPIO where it's converted to signals for the LED Light Strips.
 
 ##Packages Needed and Web Server
-you will need to grab the requests python package to use this.
+You will need pigpiod, available here: http://abyz.co.uk/rpi/pigpio/index.html
+Install Instructions:
+    rm pigpio.tar
+    sudo rm -rf PIGPIO
+    wget abyz.co.uk/rpi/pigpio/pigpio.tar
+    tar xf pigpio.tar
+    cd PIGPIO
+    make -j4
+    sudo make install
+    
+To run pigpiod at startup, add the following to the root crontab with "sudo crontab -e":
+    @reboot              /usr/local/bin/pigpiod
 
-    sudo apt-get python-requests
+You need a LAMP stack/web server on the pi:
+
+    sudo apt-get install apache2 php5 mysql-client mysql-server vsftpd
 
 
 If you want to run the web server locally on the pi you will need to install and configure "LAMP" or "LEMP" with out the MySQL, if not a regular web server that works with php will do fine
