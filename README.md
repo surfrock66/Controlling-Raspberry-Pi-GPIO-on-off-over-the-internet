@@ -67,3 +67,11 @@ http://popoklopsi.github.io/RaspberryPi-LedStrip/img/rgb/small/pi_4.png
     sudo update-rc.d RGB defaults
     
 8. To change the on off status go to http://raspberry-pi-ip/RGB.php
+
+##References
+
+http://abyz.co.uk/rpi/pigpio/index.html
+https://www.digitalocean.com/community/tutorials/how-to-install-linux-apache-mysql-php-lamp-stack-on-debian
+http://popoklopsi.github.io/RaspberryPi-LedStrip/#!/
+https://github.com/vlee489/Controlling-Raspberry-Pi-GPIO-on-off-over-the-internet
+http://ravingroo.com/decoded/download-html5-canvas-hex-rgb-color-picker.php
