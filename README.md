@@ -45,10 +45,14 @@ Parts that are helpful:
     https://www.amazon.com/Elegoo-120pcs-Multicolored-Breadboard-arduino/dp/B01EV70C78/ref=sr_1_2?ie=UTF8&qid=1474174642&sr=8-2
     https://www.amazon.com/ZITRADES-Light-Strips-Female-Connector/dp/B00D0Y8SG6/ref=sr_1_7?ie=UTF8&qid=1474175095&sr=8-7
     https://www.amazon.com/gp/product/B01G6EAZOO/ref=oh_aui_detailpage_o03_s00?ie=UTF8&psc=1
+
+The LED strips I use, since I got a ton of them at costco years ago:
+
+    https://www.amazon.com/Sylvania-72350-Flexible-Mosaic-Starter/dp/B00PWXNVRO
     
 How to assemble the support circuit (you can use whatever GPIO pins you want):
 
-http://popoklopsi.github.io/RaspberryPi-LedStrip/img/rgb/small/pi_4.png
+![LED Circuit](http://popoklopsi.github.io/RaspberryPi-LedStrip/img/rgb/small/pi_4.png)
 
 ##Setup And Install
 
