@@ -22,7 +22,7 @@ Install Instructions:
     make -j4
     sudo make install
     
-To run pigpiod at startup, add the following to the root crontab with "sudo crontab -e":
+To run pigpiod at startup, add the following to the root crontab with "crontab -e" from a root terminal:
 
     @reboot              /usr/local/bin/pigpiod
 
@@ -65,10 +65,12 @@ How to assemble the support circuit (you can use whatever GPIO pins you want):
 5. Place RGB.sh in the "For Pi" somewhere on the Raspberry Pi. (For example, your home directory, ~/)
 6. Edit the RGB.sh file with the GPIO Pins you're using.  Modify the polling interval if needed.
 7. Set the RGB.sh script to run at boot by running the following code:
-  * sudo cp ~/RGB.sh /etc/init.d/RGB
-  * sudo chmod 755 /etc/init.d/RGB
-  * sudo chown root:root /etc/init.d/RGB
-  * sudo update-rc.d RGB defaults
+  * sudo cp ~/RGB.sh /etc/RGB.sh
+  * sudo chmod 755 /etc/RGB.sh
+  * sudo chown root:root /etc/RGB.sh
+  * su - 
+  * crontab -e
+  * Add "@reboot	/etc/RGB.sh &"
 8. To change the on off status go to http://raspberry-pi-ip/RGB.php
 
 ##References

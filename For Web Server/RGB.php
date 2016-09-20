@@ -25,6 +25,7 @@
 <html>
     <head>
         <title>RGB LED Controller</title>
+        <link rel="icon" type="image/png" href="favicon.png" />
         <meta name="description" content="RGB LED Controller for light strips connected to a Raspberry Pi" />
         <meta name="author" content="surfrock66" />
         <meta name="email" content="surfrock66@surfrock66.com" />
