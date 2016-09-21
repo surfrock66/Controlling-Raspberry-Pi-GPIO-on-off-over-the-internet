@@ -57,7 +57,7 @@ How to assemble the support circuit (you can use whatever GPIO pins you want):
 ##Setup And Install
 
 1. Place all the Files in the "For Web Server" folder in the Root of your web server. (Default is /var/www/html/)
-2. Select the desired PNG image you want to use in your interface, rename it to "RGB.png".  Remove other RGB-*.png files if desired.
+2. Select the desired PNG image you want to use in your interface, rename it to "RGB.png".  Remove other RGB-*.png files if desired.  I have included the base .xcf file, so swatches can be rearranged or modified in GIMP.
 3. Ensure the web files are owned by the web user: 
   * sudo chown www-data:www-data /var/www/html/RGB*
 4. Ensure the files have correct permissions: 
