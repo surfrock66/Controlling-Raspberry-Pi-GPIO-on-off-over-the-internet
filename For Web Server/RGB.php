@@ -20,6 +20,10 @@
                     $blue = $_GET['B'];
                 }
             }
+        } elseif ( $_GET['submit'] == "Off") {
+            $red = "0";
+            $green = "0";
+            $blue = "0";
         } else {
             $red = $_GET['submit'];
             $green = "0";
@@ -46,7 +50,7 @@
                 font-size: 36px;
             }
             p {
-                margin: 10px auto;
+                margin: 5px;
             }
             body {
                 background-color:#000000;
@@ -60,6 +64,7 @@
                 background: transparent;
                 width: 300px;
                 height:100px;
+                padding: 0px 10px;
             }
             .hccp-outerdiv {
                 display:inline;
@@ -93,7 +98,11 @@
                     <tr>
                         <td colspan="3">
                             <p class="hccp-colorbar">Selected Color: <input type="text" id="hccp-clickColor" value="" /></p>
-                            <p>R: <input type="text" name="R" class="hccp-rgbval" id="hccp-clickColorR" /> G: <input type="text" name="G" class="hccp-rgbval" id="hccp-clickColorG" /> B: <input type="text" name="B" class="hccp-rgbval" id="hccp-clickColorB" /></p>
+                            <p>
+                                R: <input type="text" name="R" class="hccp-rgbval" id="hccp-clickColorR" /> 
+                                G: <input type="text" name="G" class="hccp-rgbval" id="hccp-clickColorG" /> 
+                                B: <input type="text" name="B" class="hccp-rgbval" id="hccp-clickColorB" />
+                            </p>
                         </td>
                         <td colspan="3">
                             <p><input type="submit" value="Set Color" name="submit" class="hccp-rgbsubmit" /></p>
@@ -110,8 +119,15 @@
                             <p><input type="submit" value="Step" name="submit" class="hccp-rgbsubmit" /></p> 
                         </td>
                     </tr>
+-->                    <tr>
+                        <td colspan="2"></td>
+                        <td colspan="2">
+                            <p><input type="submit" value="Off" name="submit" class="hccp-rgbsubmit" /></p> 
+                        </td>
+                        <td colspan="2"></td>
+                    </tr>
                 </table> 
--->                <div class="hccp-resetdiv"></div>
+                <div class="hccp-resetdiv"></div>
             </div>
         </form>
         <script src="http://code.jquery.com/jquery-latest.min.js"></script>
