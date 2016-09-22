@@ -1,10 +1,16 @@
 <?php
     $lines = file('RGB.txt', FILE_IGNORE_NEW_LINES);
-    $red = $lines[0];
-    $green = $lines[1];
-    $blue = $lines[2];
+    $submit = $lines[0];
+    $red = $lines[1];
+    $green = $lines[2];
+    $blue = $lines[3];
     if ( isset( $_GET['submit'] ) ) {
-        if ( $_GET['submit'] == "Set Color" ) {
+        if ( $_GET['submit'] == "Off") {
+            $submit = $_GET['submit'];
+            $red = "0";
+            $green = "0";
+            $blue = "0";
+        } else {
             if ( isset( $_GET['R'] ) ) {
                 if ( ctype_digit( $_GET['R'] ) ) {
                     $red = $_GET['R'];
@@ -20,17 +26,14 @@
                     $blue = $_GET['B'];
                 }
             }
-        } elseif ( $_GET['submit'] == "Off") {
-            $red = "0";
-            $green = "0";
-            $blue = "0";
-        } else {
-            $red = $_GET['submit'];
-            $green = "0";
-            $blue = "0";
+            $submit = $_GET['submit'];
+            if ( $submit == "Solid" && $red == "0" && $green == "0" && $blue == "0" ) {
+                $submit = "Off";
+            }
         }
     }
-    $combined = $red . "\n" . $green . "\n" . $blue . "\n";
+    $combined = $submit . "\n" . $red . "\n" . $green . "\n" . $blue . "\n";
+//echo $combined;
     file_put_contents('RGB.txt', $combined);
 ?>
 <!doctype html>
@@ -55,10 +58,15 @@
             body {
                 background-color:#000000;
             }
-            .hccp-rgbval {
-                max-width: 68px;
+            .hccp-rgbCurrentval,.hccp-rgbClickval {
                 background: transparent;
                 border: none;
+            }
+            .hccp-rgbCurrentval {
+                max-width: 68px;
+            }
+            .hccp-rgbClickval {
+                max-width: 45px;
             }
             .hccp-rgbsubmit {
                 background: transparent;
@@ -84,8 +92,16 @@
             .hccp-resetdiv {
                 clear:both;
             }
-            #hccp-clickColor {
+            .hccp-rgbClickval,.hccp-colorbar,#hccp-clickColor {
+                font-size: 24px;
+            }
+            #hccp-clickColor,#hccp-currentColor {
                 border: 1px solid #FFFFFF;
+            }
+            #hccp-clickColor {
+                width: 90px;
+            }
+            #hccp-currentColor {
                 width: 150px;
             }
         </style>
@@ -93,24 +109,38 @@
     <body>
         <form method="GET" action="RGB.php">
             <div class="hccp-outerdiv">
+                <div style="margin-bottom:10px;">
+                    Current State: <input type="text" id="hccp-currentColor" value="" />
+                    R: <input type="text" name="R" class="hccp-rgbCurrentval" id="hccp-currentColorR" /> 
+                    G: <input type="text" name="G" class="hccp-rgbCurrentval" id="hccp-currentColorG" /> 
+                    B: <input type="text" name="B" class="hccp-rgbCurrentval" id="hccp-currentColorB" />
+                </div>
                 <canvas class="hccp-canvas" id="hccp-FindCanvasColor"></canvas>
                 <table border="0" class="hccp-innerdiv">
                     <tr>
-                        <td colspan="3">
-                            <p class="hccp-colorbar">Selected Color: <input type="text" id="hccp-clickColor" value="" /></p>
-                            <p>
-                                R: <input type="text" name="R" class="hccp-rgbval" id="hccp-clickColorR" /> 
-                                G: <input type="text" name="G" class="hccp-rgbval" id="hccp-clickColorG" /> 
-                                B: <input type="text" name="B" class="hccp-rgbval" id="hccp-clickColorB" />
+                        <td colspan="2">
+                            <p class="hccp-colorbar">Set Color: <input type="text" id="hccp-clickColor" value="" /></p>
+                            <p class="hccp-colorbar">
+                                R: <input type="text" name="R" class="hccp-rgbClickval" id="hccp-clickColorR" /> 
+                                G: <input type="text" name="G" class="hccp-rgbClickval" id="hccp-clickColorG" /> 
+                                B: <input type="text" name="B" class="hccp-rgbClickval" id="hccp-clickColorB" />
                             </p>
                         </td>
-                        <td colspan="3">
-                            <p><input type="submit" value="Set Color" name="submit" class="hccp-rgbsubmit" /></p>
+                        <td colspan="2">
+                            <p><input type="submit" value="Solid" name="submit" class="hccp-rgbsubmit" /></p>
                         </td>
-                    </tr>
-<!--                    <tr>
                         <td colspan="2">
                             <p><input type="submit" value="Strobe" name="submit" class="hccp-rgbsubmit" /></p>
+                        </td> 
+                    </tr>
+                    <tr>
+                        <td colspan="6">
+                            <p>Patterns</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <p><input type="submit" value="Party" name="submit" class="hccp-rgbsubmit" /></p>
                         </td> 
                         <td colspan="2">
                             <p><input type="submit" value="Fade" name="submit" class="hccp-rgbsubmit" /></p> 
@@ -119,7 +149,7 @@
                             <p><input type="submit" value="Step" name="submit" class="hccp-rgbsubmit" /></p> 
                         </td>
                     </tr>
--->                    <tr>
+                    <tr>
                         <td colspan="2"></td>
                         <td colspan="2">
                             <p><input type="submit" value="Off" name="submit" class="hccp-rgbsubmit" /></p> 
@@ -197,42 +227,29 @@
                 }
             });
 
-            var hex = RGBtoHex(<?php if ( ctype_digit( $red ) ) { echo $red; } else { echo "0"; } ?>,<?php echo $green; ?>,<?php echo $blue; ?>);
+            var hex = RGBtoHex(<?php echo $red; ?>,<?php echo $green; ?>,<?php echo $blue; ?>);
             <?php
-                if ( ctype_digit( $red ) ) { 
-                    if ( $red == "0" && $green == "0" && $blue == "0" ) { 
-                        $clickColorColor = "'#FFFFFF'"; 
-                    } else { 
-                        $clickColorColor = "hex"; 
-                    } 
+                if ( $submit == "Solid" ) { 
+                    $clickColorColor = "hex";
+                    $clickColorBackground = "hex";
                 } else { 
                     $clickColorColor = "'#FFFFFF'"; 
+                    $clickColorBackground = "'#000000'";
                 }
             ?>
             document.getElementById('hccp-clickColor').style.color = <?php echo $clickColorColor; ?>;
-            document.getElementById('hccp-clickColor').style.backgroundColor = hex;
-            <?php
-                if ( ctype_digit( $red ) ) { 
-                    if ( $red == "0" && $green == "0" && $blue == "0" ) { 
-                        $clickColorVal = "'Off'"; 
-                    } else { 
-                        $clickColorVal = "'Color'"; 
-                    } 
-                } else { 
-                    $clickColorVal = "'".$red."'"; 
-                }
-            ?>
-            document.getElementById('hccp-clickColor').value = <?php echo $clickColorVal; ?>;
-            <?php
-                if ( ctype_digit( $red ) ) {
-                    $redVal = $red;
-                } else {
-                    $redVal = "0";
-                }
-            ?>
-            document.getElementById('hccp-clickColorR').value = <?php echo $redVal; ?>;
+            document.getElementById('hccp-clickColor').style.backgroundColor = <?php echo $clickColorBackground; ?>;
+            document.getElementById('hccp-clickColor').value = <?php echo "'".$submit."'"; ?>;
+            document.getElementById('hccp-clickColorR').value = <?php echo $red; ?>;
             document.getElementById('hccp-clickColorG').value = <?php echo $green; ?>;
             document.getElementById('hccp-clickColorB').value = <?php echo $blue; ?>;
+
+            document.getElementById('hccp-currentColor').style.color = <?php echo $clickColorColor; ?>;
+            document.getElementById('hccp-currentColor').style.backgroundColor = <?php echo $clickColorBackground; ?>;
+            document.getElementById('hccp-currentColor').value = <?php echo "'".$submit."'"; ?>;
+            document.getElementById('hccp-currentColorR').value = <?php echo $red; ?>;
+            document.getElementById('hccp-currentColorG').value = <?php echo $green; ?>;
+            document.getElementById('hccp-currentColorB').value = <?php echo $blue; ?>;
         </script>
     </body>
 </html>

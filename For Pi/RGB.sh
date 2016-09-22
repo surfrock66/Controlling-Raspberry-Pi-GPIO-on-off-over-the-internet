@@ -29,15 +29,42 @@ PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/opt/bin
 gpioPinRed=24
 gpioPinGreen=25
 gpioPinBlue=22
-pollingInterval=".25"	# Value In Seconds
+defaultPollingInterval=".25"	# Value In Seconds
 
+count=0
 
 gpiopins=($gpioPinRed $gpioPinGreen $gpioPinBlue)
+pollingInterval=$defaultPollingInterval
 while true; do
     i=0
     for j in `wget -qO- http://localhost/RGB.txt`; do
-        pigs p ${gpiopins[$i]} $j
+        readline[$i]=$j
         i=$(($i+1))
     done
+#echo $j $k $count ${gpiopins[0]} ${strobeR[$k]} ${gpiopins[1]} ${strobeG[$k]} ${gpiopins[2]} ${strobeB[$k]}
+#echo ${readline[0]} ${readline[1]} ${readline[2]} ${readline[3]}
+    if [ ${readline[0]} == "Strobe" ]; then
+        pollingInterval=".125"
+        if [ ${readline[1]} == "0" ] && [ ${readline[2]} == "0" ] && [ ${readline[3]} == "0" ]; then
+            strobeR=(255 0)
+            strobeG=(255 0)
+            strobeB=(255 0)
+        else
+            strobeR=(${readline[1]} 0)
+            strobeG=(${readline[2]} 0)
+            strobeB=(${readline[3]} 0)
+        fi
+        k=$(($count%2))
+        pigs p ${gpiopins[0]} ${strobeR[$k]} p ${gpiopins[1]} ${strobeG[$k]} p ${gpiopins[2]} ${strobeB[$k]}
+        count=$(($count+1))
+    elif [ ${readline[0]} == "Solid" ]; then
+        pollingInterval=$defaultPollingInterval
+        count=0
+        pigs p ${gpiopins[0]} ${readline[1]} p ${gpiopins[1]} ${readline[2]} p ${gpiopins[2]} ${readline[3]}
+    else
+        pollingInterval=$defaultPollingInterval
+        count=0
+        pigs p ${gpiopins[0]} 0 p ${gpiopins[1]} 0 p ${gpiopins[2]} 0
+    fi
     sleep $pollingInterval
 done
