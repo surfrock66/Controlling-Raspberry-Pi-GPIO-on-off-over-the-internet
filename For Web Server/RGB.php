@@ -73,6 +73,7 @@
                 width: 300px;
                 height:100px;
                 padding: 0px 10px;
+                font-size: 48px;
             }
             .hccp-outerdiv {
                 display:inline;
@@ -118,7 +119,7 @@
                 <canvas class="hccp-canvas" id="hccp-FindCanvasColor"></canvas>
                 <table border="0" class="hccp-innerdiv">
                     <tr>
-                        <td colspan="2">
+                        <td>
                             <p class="hccp-colorbar">Set Color: <input type="text" id="hccp-clickColor" value="" /></p>
                             <p class="hccp-colorbar">
                                 R: <input type="text" name="R" class="hccp-rgbClickval" id="hccp-clickColorR" /> 
@@ -126,35 +127,35 @@
                                 B: <input type="text" name="B" class="hccp-rgbClickval" id="hccp-clickColorB" />
                             </p>
                         </td>
-                        <td colspan="2">
+                        <td>
                             <p><input type="submit" value="Solid" name="submit" class="hccp-rgbsubmit" /></p>
                         </td>
-                        <td colspan="2">
+                        <td>
                             <p><input type="submit" value="Strobe" name="submit" class="hccp-rgbsubmit" /></p>
                         </td> 
                     </tr>
                     <tr>
-                        <td colspan="6">
+                        <td colspan="3">
                             <p>Patterns</p>
                         </td>
                     </tr>
                     <tr>
-                        <td colspan="2">
+                        <td>
                             <p><input type="submit" value="Party" name="submit" class="hccp-rgbsubmit" /></p>
                         </td> 
-                        <td colspan="2">
+                        <td>
                             <p><input type="submit" value="Fade" name="submit" class="hccp-rgbsubmit" /></p> 
                         </td> 
-                        <td colspan="2">
+                        <td>
                             <p><input type="submit" value="Step" name="submit" class="hccp-rgbsubmit" /></p> 
                         </td>
                     </tr>
                     <tr>
-                        <td colspan="2"></td>
-                        <td colspan="2">
+                        <td></td>
+                        <td>
                             <p><input type="submit" value="Off" name="submit" class="hccp-rgbsubmit" /></p> 
                         </td>
-                        <td colspan="2"></td>
+                        <td></td>
                     </tr>
                 </table> 
                 <div class="hccp-resetdiv"></div>

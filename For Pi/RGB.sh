@@ -35,6 +35,7 @@ count=0
 
 gpiopins=($gpioPinRed $gpioPinGreen $gpioPinBlue)
 pollingInterval=$defaultPollingInterval
+fade=(255 0 0)
 while true; do
     i=0
     for j in `wget -qO- http://localhost/RGB.txt`; do
@@ -57,6 +58,23 @@ while true; do
         k=$(($count%2))
         pigs p ${gpiopins[0]} ${strobeR[$k]} p ${gpiopins[1]} ${strobeG[$k]} p ${gpiopins[2]} ${strobeB[$k]}
         count=$(($count+1))
+    elif [ ${readline[0]} == "Fade" ]; then
+        pollingInterval=".125"
+        steps="51" #Possible values: 3, 5, 15, 17, 51, 85
+        if [ ${fade[0]} -eq 255 ] && [ ${fade[2]} -eq 0 ] && [ ${fade[1]} -lt 255 ]; then
+            fade[1]=$(( fade[1] + steps ))
+        elif [ ${fade[1]} -eq 255 ] && [ ${fade[2]} -eq 0 ] && [ ${fade[0]} -gt 0 ]; then
+            fade[0]=$(( fade[0] - steps ))
+        elif [ ${fade[0]} -eq 0 ] && [ ${fade[1]} -eq 255 ] && [ ${fade[2]} -lt 255 ]; then
+            fade[2]=$(( fade[2] + steps ))
+        elif [ ${fade[0]} -eq 0 ] && [ ${fade[2]} -eq 255 ] && [ ${fade[1]} -gt 0 ]; then
+            fade[1]=$(( fade[1] - steps ))
+        elif [ ${fade[1]} -eq 0 ] && [ ${fade[2]} -eq 255 ] && [ ${fade[0]} -lt 255 ]; then
+            fade[0]=$(( fade[0] + steps ))
+        elif [ ${fade[0]} -eq 255 ] && [ ${fade[1]} -eq 0 ] && [ ${fade[2]} -gt 0 ]; then
+            fade[2]=$(( fade[2] - steps ))
+        fi
+        pigs p ${gpiopins[0]} ${fade[0]} p ${gpiopins[1]} ${fade[1]} p ${gpiopins[2]} ${fade[2]}
     elif [ ${readline[0]} == "Solid" ]; then
         pollingInterval=$defaultPollingInterval
         count=0
