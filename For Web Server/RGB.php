@@ -84,7 +84,7 @@
             }
             .hccp-innerdiv {
                 min-width: 650px;
-                width: 90%;
+                width: 650px;
                 margin: 0px auto;
             }
             .hccp-colorbar {
@@ -93,7 +93,7 @@
             .hccp-resetdiv {
                 clear:both;
             }
-            .hccp-rgbClickval,.hccp-colorbar,#hccp-clickColor {
+            .hccp-rgbClickval,.hccp-colorbar,#hccp-clickColor,.helptext {
                 font-size: 24px;
             }
             #hccp-clickColor,#hccp-currentColor {
@@ -142,12 +142,15 @@
                     <tr>
                         <td>
                             <p><input type="submit" value="Party" name="submit" class="hccp-rgbsubmit" /></p>
+                            <p class="helptext">Random Color Flashing<br />&nbsp;</p>
                         </td> 
                         <td>
                             <p><input type="submit" value="Fade" name="submit" class="hccp-rgbsubmit" /></p> 
+                            <p class="helptext">Smooth Fade Through Rainbow</p>
                         </td> 
                         <td>
                             <p><input type="submit" value="Step" name="submit" class="hccp-rgbsubmit" /></p> 
+                            <p class="helptext">Even Steps Through 6 Colors</p>
                         </td>
                     </tr>
                     <tr>
