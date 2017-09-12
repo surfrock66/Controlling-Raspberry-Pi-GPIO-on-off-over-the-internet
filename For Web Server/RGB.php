@@ -40,7 +40,11 @@
 <html>
     <head>
         <title>RGB LED Controller</title>
-        <link rel="icon" type="image/png" href="favicon.png" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png">
+        <link rel="manifest" href="/icons/manifest.json">
+        <meta name="theme-color" content="#ffffff">
         <meta name="description" content="RGB LED Controller for light strips connected to a Raspberry Pi" />
         <meta name="author" content="surfrock66" />
         <meta name="email" content="surfrock66@surfrock66.com" />
