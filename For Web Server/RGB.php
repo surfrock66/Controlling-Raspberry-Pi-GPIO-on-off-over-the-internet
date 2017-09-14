@@ -40,11 +40,18 @@
 <html>
     <head>
         <title>RGB LED Controller</title>
-        <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png">
-        <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png">
-        <link rel="manifest" href="/icons/manifest.json">
-        <meta name="theme-color" content="#ffffff">
+        <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="192x192" href="/favicons/android-chrome-192x192.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png">
+        <link rel="manifest" href="/favicons/manifest.json">
+        <link rel="shortcut icon" href="/favicons/favicon.ico">
+        <meta name="apple-mobile-web-app-title" content="RPi RGB Web">
+        <meta name="application-name" content="RPi RGB Web">
+        <meta name="msapplication-TileColor" content="#000000">
+        <meta name="msapplication-TileImage" content="/favicons/mstile-144x144.png">
+        <meta name="msapplication-config" content="/favicons/browserconfig.xml">
+        <meta name="theme-color" content="#000000">
         <meta name="description" content="RGB LED Controller for light strips connected to a Raspberry Pi" />
         <meta name="author" content="surfrock66" />
         <meta name="email" content="surfrock66@surfrock66.com" />
@@ -61,6 +68,7 @@
             }
             body {
                 background-color:#000000;
+                margin-top:20px;
             }
             .hccp-rgbCurrentval,.hccp-rgbClickval {
                 background: transparent;
@@ -108,6 +116,10 @@
             }
             #hccp-currentColor {
                 width: 150px;
+            }
+            #footer {
+                font-size: 12px;
+                margin-top: 25px;
             }
         </style>
     </head>
@@ -164,10 +176,53 @@
                         </td>
                         <td></td>
                     </tr>
+                    <tr>
+                        <td>
+                            <p><input type="submit" value="12-25-Fade" name="submit" class="hccp-rgbsubmit" /></p>
+                            <p class="helptext">Christmas Colors Fading Smoothly</p>
+                        </td> 
+                        <td>
+                            <p><input type="submit" value="10-31-Fade" name="submit" class="hccp-rgbsubmit" /></p> 
+                            <p class="helptext">Halloween Colors Fading Smoothly</p>
+                        </td> 
+                        <td>
+                            <p><input type="submit" value="07-04-Fade" name="submit" class="hccp-rgbsubmit" /></p> 
+                            <p class="helptext">Fourth of July Colors Fading Smoothly</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p><input type="submit" value="12-25-Step" name="submit" class="hccp-rgbsubmit" /></p>
+                            <p class="helptext">Christmas Colors Stepping</p>
+                        </td> 
+                        <td>
+                            <p><input type="submit" value="10-31-Step" name="submit" class="hccp-rgbsubmit" /></p> 
+                            <p class="helptext">Halloween Colors Stepping</p>
+                        </td> 
+                        <td>
+                            <p><input type="submit" value="07-04-Step" name="submit" class="hccp-rgbsubmit" /></p> 
+                            <p class="helptext">Fourth of July Colors Stepping</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p><input type="submit" value="" name="submit" class="hccp-rgbsubmit" /></p>
+                            <p class="helptext"></p>
+                        </td> 
+                        <td>
+                            <p><input type="submit" value="" name="submit" class="hccp-rgbsubmit" /></p> 
+                            <p class="helptext"></p>
+                        </td> 
+                        <td>
+                            <p><input type="submit" value="" name="submit" class="hccp-rgbsubmit" /></p> 
+                            <p class="helptext"></p>
+                        </td>
+                    </tr>
                 </table> 
                 <div class="hccp-resetdiv"></div>
             </div>
         </form>
+        <div id=footer>Project by <a href="mailt:surfrock66@surfrock66.com">surfrock66@surfrock66.com"</a>.  View source on GitHub: <a href="https://github.com/surfrock66/RPi-RGB-Web">https://github.com/surfrock66/RPi-RGB-Web</a></div>
         <script src="http://code.jquery.com/jquery-latest.min.js"></script>
         <script>
             /*!
