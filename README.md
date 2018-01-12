@@ -28,7 +28,7 @@ To run pigpiod at startup, add the following to the root crontab with "crontab -
 
 You need a LAMP stack/web server on the pi:
 
-    sudo apt-get install apache2 php5 mysql-client mysql-server vsftpd
+    sudo apt-get install apache2 php mysql-client mysql-server vsftpd
 
 LAMP how to: [DigitalOcean LAMP Guide](https://www.digitalocean.com/community/tutorials/how-to-install-linux-apache-mysql-php-lamp-stack-on-debian)
 
