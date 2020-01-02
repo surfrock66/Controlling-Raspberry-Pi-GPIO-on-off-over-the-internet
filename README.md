@@ -34,7 +34,7 @@ LAMP how to: [DigitalOcean LAMP Guide](https://www.digitalocean.com/community/tu
 
 ##Hardware Required
 
-I've used the hardware outlined in this guide, and I'll summarize it here: [Project which inspired the circuit and pigs code](http://popoklopsi.github.io/RaspberryPi-LedStrip/#!/)
+I've used the hardware outlined in this guide, and I'll summarize it here: [Project which inspired the circuit and pigs code](https://dordnung.de/raspberrypi-ledstrip/)
 
 Parts needed:
 
@@ -45,6 +45,7 @@ Parts that are helpful:
 * [Aamzon: Female Breadboard Wire](https://www.amazon.com/Elegoo-120pcs-Multicolored-Breadboard-arduino/dp/B01EV70C78/ref=sr_1_2?ie=UTF8&qid=1474174642&sr=8-2)
 * [Amazon: LED Strip Connector](https://www.amazon.com/ZITRADES-Light-Strips-Female-Connector/dp/B00D0Y8SG6/ref=sr_1_7?ie=UTF8&qid=1474175095&sr=8-7)
 * [Amazon: Female Barrel Plug](https://www.amazon.com/gp/product/B01G6EAZOO/ref=oh_aui_detailpage_o03_s00?ie=UTF8&psc=1)
+* [Amazon: RGB Signal Amplifier](https://www.amazon.com/gp/product/B00E4JQDKE/ref=ppx_od_dt_b_asin_title_s00?ie=UTF8&psc=1)
 
 The LED strips I use, since I got a ton of them at costco years ago:
 
@@ -52,7 +53,7 @@ The LED strips I use, since I got a ton of them at costco years ago:
     
 How to assemble the support circuit (you can use whatever GPIO pins you want):
 
-![LED Circuit](http://popoklopsi.github.io/RaspberryPi-LedStrip/img/rgb/small/pi_4.png)
+![LED Circuit](https://dordnung.de/raspberrypi-ledstrip/img/rgb/pi_4.jpg?ver=1.0)
 
 ##Setup And Install
 
